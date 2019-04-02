@@ -45,6 +45,68 @@ a {
 
 }
 
+
+.ethInfoSection
+{
+
+  display: flex;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  min-height:20rem;
+  background:#d8d8d8;
+
+}
+
+.ethInfoTable
+{
+  display: flex;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  min-height:10rem;
+  height: auto;
+  width: 75%;
+  border:1px solid #cccccc;
+  border-radius: 5px;
+  background: white;
+
+}
+
+.ethInfoSubTable
+{
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  height: auto;
+  width: 33%;
+
+}
+
+.ethInfoTableSection
+{
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  height: auto;
+  width:100%;
+  min-height:5rem;
+
+}
+
+
 .titleText {
 
   display: flex;
@@ -67,6 +129,7 @@ a {
   width: 75rem;
 
 }
+
 
 /* Search Bar */
 
@@ -177,3 +240,24 @@ a {
   width: 100%
 
 }
+
+/* Dividers */
+
+.horizontalDivider
+{
+  height:140px;
+  width:1px;
+  border-right: 1px solid #cccccc;
+}
+
+.verticalDivider
+{
+  height:1px;
+  width:90%;
+  border-bottom: 1px solid #cccccc;
+}
+
+
+
+
+
