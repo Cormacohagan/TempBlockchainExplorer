@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('website:server');
 var http = require('http');
+// var ethTableRequests = require('/routes/ethTableRequests');
 
 /**
  * Get port from environment and store in Express.
@@ -88,3 +89,8 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+
+// Endpoints
+
+// app.get('/ethPrice', ethTableRequests);

@@ -1,10 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.send("WHAT TEH FUCK")
-    //res.render('home', { title: 'Test' });
+
+    //res.render('/pages/home/home');
+    res.sendFile(path.join(__dirname + '/../public/pages/home/home.html'));
+
 });
 
 module.exports = router;
