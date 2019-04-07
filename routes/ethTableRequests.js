@@ -96,8 +96,8 @@ router.get('/blockData', function(req, res) {
 
         if(curBlock){
             var blockData = {number: curBlock.number, hash: curBlock.hash, timestamp: curBlock.timestamp,
-                            miner: curBlock.miner, difficulty: curBlock.difficulty, size: curBlock.size,
-                            gasUsed: curBlock.gasUsed, transactions: curBlock.transactions};
+                miner: curBlock.miner, difficulty: curBlock.difficulty, size: curBlock.size,
+                gasUsed: curBlock.gasUsed, transactions: curBlock.transactions};
 
             res.send(blockData);
 
@@ -109,6 +109,30 @@ router.get('/blockData', function(req, res) {
 
 });
 
+
+/* GET data for given transaction */
+router.get('/transactionData', function(req, res) {
+
+    var web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/v3/91385a4c298148b58b285223dc9fc33b'));
+
+    try{
+
+        var curBlock = web3.eth.getTransaction(req.query.transactionNumber);
+
+        if(curBlock){
+            var transactionData = {hash: curBlock.blockHash, block: curBlock.blockNumber,
+                from: curBlock.from, to: curBlock.to, value: curBlock.value, gasUsed: curBlock.gas,
+                gasPrice: curBlock.gasPrice};
+
+            res.send(transactionData);
+
+        }
+    }
+    catch{
+        res.send("Error: No Transaction Data Found");
+    }
+
+});
 
 module.exports = router;
 

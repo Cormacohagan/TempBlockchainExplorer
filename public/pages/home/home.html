@@ -43,8 +43,8 @@
             <div id = "searchBarDiv" class = "titleText" style="width:60%; justify-content: flex-end; margin-right:10%">
                 <div class="wrap">
                     <div class="search">
-                        <input type="text" class="searchTerm" placeholder="Please enter a wallet address or TX ID...">
-                        <button type="submit" class="searchButton">
+                        <input id="searchTxt1" type="text" class="searchTerm" placeholder="Please enter a block number or TX ID...">
+                        <button ng-click="searchBox1()" id="searchBtn1" class="searchButton">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -69,8 +69,8 @@
         <div class = "titleText" style="width:50%; float:right">
             <div class="wrap2">
                 <div class="search2">
-                    <input type="text" class="searchTerm2" placeholder="Search...">
-                    <button type="submit" class="searchButton2">
+                    <input id="searchTxt2" type="text" class="searchTerm2" placeholder="Search...">
+                    <button ng-click="searchBox2()" id="searchBtn2" class="searchButton2">
                         <i class="fa fa-search"></i>
                     </button>
                 </div>
@@ -78,7 +78,7 @@
         </div>
 
         <div class="whitePageText" style="padding-top:10px; font-size:0.7rem;color:#42103b;">
-            Please enter a Transaction ID or a Wallet Address
+            Please enter a Transaction ID or a Block Number
         </div>
 
     </section>
@@ -219,6 +219,11 @@
             </div>
 
         </div>
+    </section>
+
+    <!-- Footer -->
+    <section class="blockPageFooter">
+
     </section>
 
 </body>

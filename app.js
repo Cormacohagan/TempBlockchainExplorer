@@ -4,8 +4,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var router = express.Router();
 
-var usersRouter = require('./routes/users');
 var homeRouter = require('./routes/home');
+var blockRouter = require('./routes/block');
+var transactionRouter = require('./routes/transaction');
 var ethTableRequests = require('./routes/ethTableRequests');
 
 var app = express();
@@ -25,6 +26,8 @@ app.use(cookieParser());
 
 
 app.use('/', homeRouter);
+app.use('/block', blockRouter);
+app.use('/transaction', transactionRouter);
 
 //API Endpoints Below
 app.use('/eth', ethTableRequests);

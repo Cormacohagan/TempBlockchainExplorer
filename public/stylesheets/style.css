@@ -417,4 +417,121 @@ a {
 
 
 
+/* BLOCK PAGE */
 
+
+.blockPageSection {
+
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    min-height:50rem;
+    background:linear-gradient(170deg, rgb(151, 134, 153) 0%, rgb(186, 192, 188) 100%);
+
+}
+
+.blockPageFooter {
+
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    min-height:15rem;
+    background:linear-gradient(170deg, rgb(35,0,40) 0%, rgb(165, 110, 140) 100%);
+
+}
+
+
+.blockPageTitle{
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    min-height:2rem;
+    margin-bottom:15px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-transform: none;
+    font-style: normal;
+    opacity: 1;
+    color: #454545;
+    text-align: left;
+
+}
+
+.blockPageTableContainer
+{
+    display: flex;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width:60%;
+}
+
+.blockPageTable
+{
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    border:1px solid #cccccc;
+    border-radius: 5px;
+    background: white;
+
+}
+
+.blockPageContentHolder{
+    display: flex;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+}
+
+.blockPageContent{
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    min-height:3.5rem;
+    border-bottom:1px solid #cccccc;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: none;
+    font-style: normal;
+    opacity: 1;
+    color: #848484;
+    text-align: left;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+}

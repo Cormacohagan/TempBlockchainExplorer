@@ -19,22 +19,11 @@ ethChainApp.controller("homeCtrl", function($scope, $http){
    $http.get('/eth/latestBlock')
        .then(function(response){
 
-           var blockData = [];
-
            if(response.data){
                 var blockNum = response.data;
 
-                for(var i=0; i<10; i++){
-
-                    var searchParams = {blockNumber:(blockNum-i)}
-
-                    $http.get('/eth/blockData', { params:searchParams })
-                        .then(function(response){
-
-                            blockData.push(response.data);
-                            createTableElements("recentBlockTable", response.data.number);
-
-                        });
+                for(var i=0;i<10;i++){
+                    createTableElements("recentBlockTable", (blockNum-i));
                 }
            }
 
@@ -42,7 +31,7 @@ ethChainApp.controller("homeCtrl", function($scope, $http){
                .then(function(response){
 
                    for(i in response.data){
-                       createTableElements("recentTransacTable", (response.data[i]).substring(0,40));
+                       createTableElements("recentTransacTable", (response.data[i]));
                    }
 
 
@@ -50,19 +39,63 @@ ethChainApp.controller("homeCtrl", function($scope, $http){
        });
 
     function createTableElements(parentDiv, content){
+
         var blockTable = document.getElementById(parentDiv);
 
         var tableData = document.createElement("div");
         tableData.className = "blockContent";
 
         var link = document.createElement("a");
-        var linkText = document.createTextNode(content);
+
+        if(content.length > 20){
+            var linkText = document.createTextNode(content.substring(0,40));
+        }
+        else{
+            var linkText = document.createTextNode(content);
+        }
 
         link.appendChild(linkText);
-        link.href = "http://www.google.co.uk";
+
+        if(content.length > 20){
+            link.href = "/transaction/"+content;
+        }
+        else{
+            link.href = "/block/"+content;
+        }
 
         tableData.appendChild(link);
         blockTable.appendChild(tableData);
+    }
+
+    $scope.searchBox1 = function(){
+
+        var text = document.getElementById('searchTxt1').value;
+
+        if(text.length == 0){
+            console.log("Stop trying to search the empty field");
+        }
+        else if(text.length <=15){
+            window.location.href = "/block/"+text;
+        }
+        else{
+            window.location.href = "/transaction/"+text;
+        }
+    }
+
+   $scope.searchBox2 = function(){
+
+       var text = document.getElementById('searchTxt2').value;
+
+       if(text.length == 0){
+           console.log("Stop trying to search the empty field");
+       }
+       else if(text.length <=15){
+           window.location.href = "/block/"+text;
+       }
+       else{
+           window.location.href = "/transaction/"+text;
+       }
+
     }
 
 
