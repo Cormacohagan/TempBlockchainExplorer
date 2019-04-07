@@ -1,41 +1,113 @@
 var express = require('express');
 var request = require('request');
 var router = require('express').Router();
+var Web3 = require('web3');
 
 
-/* GET users listing. */
-router.get('/ethPrice', function(req, res) {
+/* GET ethStats listing. */
+router.get('/ethStats', function(req, res) {
     request("https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=GBP",
         function(error, response, body){
-        var swag = JSON.parse(body);
+        var coinInfo = JSON.parse(body);
 
         //Parse large dataset to get Eth Price, Eth Market Cap, % change in past 24 hours,
-        // Current block, Supply,
+        // Current block, Supply, Volume
 
+        //Check if Eth Data exists
+        var elementPos = coinInfo.Data.map(function(x) {return x.CoinInfo.Name;}).indexOf("ETH");
 
-        // if((swag.Data).some(e => e.CoinInfo.Name == 'ETH')){
-        //     console.log(swag.Data);
-        // }
+        if(elementPos != -1){
+            var ethData = coinInfo.Data[elementPos];
+            var ethDataObj = {"price":ethData.RAW.GBP.PRICE, "marketCap":ethData.RAW.GBP.MKTCAP,
+                "mktCapChange24": ethData.RAW.GBP.CHANGEPCT24HOUR, "blockNum": ethData.CoinInfo.BlockNumber,
+                "supply":ethData.RAW.GBP.SUPPLY, "volume":ethData.RAW.GBP.VOLUME24HOURTO};
 
-        var elementPos = swag.Data.map(function(x) {return x;}).indexOf("ETH");
-
-        console.log(elementPos);
-
-
-        // for(i in swag.Data){
-        //
-        //     if(swag.Data[i].CoinInfo.Name == "ETH"){
-        //         console.log(swag.Data[i]);
-        //         res.send("Banana");
-        //     }
-        // }
-
-        res.send("Big money");
+            console.log(ethDataObj);
+            
+            res.send(ethDataObj);
+        }
+        else{
+            res.send(error);
+        }
 
     })
 });
 
 
+
+/* GET ethTransactions listing. */
+router.get('/recentTransactions', function(req, res) {
+
+    var web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/v3/91385a4c298148b58b285223dc9fc33b'));
+    var transactions = [];
+    var curBlock = (web3.eth.getBlock('latest'));
+    var totalTransactions = curBlock.transactions;
+
+    if(totalTransactions.length > 10){
+        //Populate 10 transactions from latest block found
+        for(var i=0; i<10; i++){
+            transactions.push(totalTransactions[i]);
+        }
+    }
+    else{
+        //Populate 10 transactions from as many blocks in chronological order as necessary
+        while(transactions.length < 10){
+            var prevBlock = curBlock.number-1;
+
+            for(var j in totalTransactions){
+                transactions.push(totalTransactions[j]);
+            }
+
+            curBlock = web3.eth.getBlock(prevBlock);
+            totalTransactions = curBlock.transactions;
+
+        }
+    }
+
+    //console.log(transactions);
+    res.send(transactions);
+
+
+});
+
+/* GET latest block number. */
+router.get('/latestBlock', function(req, res) {
+
+    var web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/v3/91385a4c298148b58b285223dc9fc33b'));
+
+    try{
+        var curBlock = web3.eth.getBlock('latest').number;
+        res.send(curBlock.toString());
+    }
+    catch{
+        res.send("Error: No Blocks Found");
+    }
+
+});
+
+
+/* GET data for given block */
+router.get('/blockData', function(req, res) {
+
+    var web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/v3/91385a4c298148b58b285223dc9fc33b'));
+
+    try{
+        var curBlock = web3.eth.getBlock(req.query.blockNumber);
+
+        if(curBlock){
+            var blockData = {number: curBlock.number, hash: curBlock.hash, timestamp: curBlock.timestamp,
+                            miner: curBlock.miner, difficulty: curBlock.difficulty, size: curBlock.size,
+                            gasUsed: curBlock.gasUsed, transactions: curBlock.transactions};
+
+            res.send(blockData);
+
+        }
+    }
+    catch{
+        res.send("Error: No Block Data Found");
+    }
+
+});
 
 
 module.exports = router;

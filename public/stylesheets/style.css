@@ -45,7 +45,103 @@ a {
 
 }
 
+/* All things related to block/transaction table/section */
+.blockSection {
 
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    min-height:50rem;
+    background:linear-gradient(170deg, rgb(151, 134, 153) 0%, rgb(186, 192, 188) 100%);
+
+}
+
+.blockTitle{
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    min-height:2rem;
+    border-bottom:1px solid #cccccc;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: none;
+    font-style: normal;
+    opacity: 1;
+    color: #454545;
+    text-align: left;
+
+}
+
+.blockContent{
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    min-height:3.5rem;
+    border-bottom:1px solid #cccccc;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: none;
+    font-style: normal;
+    opacity: 1;
+    color: #848484;
+    text-align: left;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+}
+
+.blockTableContainer
+{
+    display: flex;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    min-height:40rem;
+    width:60%;
+}
+
+.blockTable
+{
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    align-items: center;
+    min-height:40rem;
+    height: auto;
+    width: 50%;
+    border:1px solid #cccccc;
+    border-radius: 5px;
+    background: white;
+
+}
+
+
+
+
+/* All things related to Eth Info Table & Section */
 .ethInfoSection
 {
 
@@ -95,6 +191,20 @@ a {
 .ethInfoTableSection
 {
   display: flex;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  height: auto;
+  width:100%;
+  min-height:2.5rem;
+
+}
+
+.ethInfoTableContents
+{
+  display: flex;
   flex-direction: column;
   -webkit-box-pack: center;
   justify-content: center;
@@ -103,6 +213,53 @@ a {
   height: auto;
   width:100%;
   min-height:5rem;
+
+}
+.ethInfoTableSectionTitle
+{
+  display: flex;
+  position:relative;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  align-items: center;
+  height: auto;
+  width:100%;
+  min-height:2.5rem;
+
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: none;
+  font-style: normal;
+  opacity: 1;
+  color: #848484;
+  text-align: center;
+
+}
+
+.ethInfoTableSectionData
+{
+  display: flex;
+  position:relative;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  align-items: center;
+  height: auto;
+  width:100%;
+  min-height:2.5rem;
+
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: none;
+  font-style: normal;
+  opacity: 1;
+  color: #000000;
+  text-align: center;
 
 }
 
