@@ -1,5 +1,6 @@
 # A Blockchain for Micro-Payments between Robotic Services
 
+![Image of Home Page](public/images/ethChain.PNG?raw=true "Home Page")
 
 ## Tech:
 Ubuntu 18.10
