@@ -3,16 +3,22 @@
 ![Image of Home Page](public/images/ethChain.PNG?raw=true "Home Page")
 
 ## Tech:
-Ubuntu 18.10
-Go-Ethereum Private Blockchain network
-Web3.py Ethereum API
+- Ubuntu 18.10
+
+- Go-Ethereum Private Blockchain network
+
+- Web3.py Ethereum API
 
 ## 3 Applications powered by 
-Node.js/JS/Express/HTML/CSS
-MongoDB
-Several External APIs
-Geth (Go Ethereum) Private Blockchain
-Ethereum Cryptocurrency
+- Node.js/JS/Express/HTML/CSS
+
+- MongoDB
+
+- Several External APIs
+
+- Geth (Go Ethereum) Private Blockchain
+
+- Ethereum Cryptocurrency
 
 
 ## Run Programs:
@@ -26,6 +32,9 @@ Alternatively, the server file in each website is located in /bin at the base of
 You can use node bin/www to run them individually.
 
 The ports for each site are as follows:
+
 -localhost:3001/ - Blockchain Explorer
+
 -localhost:3002/ - Business Portal
+
 -localhost:3003/ - Client Application
